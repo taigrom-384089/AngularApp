@@ -31,5 +31,5 @@ import { CounterComponent } from './components/counter/counter.component';
         ])
     ]
 })
-export class AppModuleShared {
+export class AppRoutingModule {
 }
