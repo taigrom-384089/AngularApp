@@ -5,16 +5,19 @@ import { NavMenuComponent } from './components/controls/navmenu/navmenu.componen
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/controls/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/controls/counter/counter.component';
+import { LoginComponent } from "./components/login/login.component";
 
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+            { path: 'counter', component: CounterComponent, canActivate: [AuthGuard] },
+            { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthGuard] },
+            { path: "login", component: LoginComponent, data: { title: "Login" } },
             { path: '**', redirectTo: 'home' }
         ])
     ],
@@ -22,7 +25,7 @@ import { AuthService } from './services/auth.service';
         RouterModule
     ],
     providers: [
-        AuthService
+        AuthService, AuthGuard
     ]
 })
 export class AppRoutingModule {
