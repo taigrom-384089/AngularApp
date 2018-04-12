@@ -1,5 +1,5 @@
 {
-  "name": "AngularApp",
+  "name": "angularapp",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -21,8 +21,10 @@
     "@ngx-translate/core": "^8.0.0",
     "@swimlane/ngx-datatable": "^10.2.3",
     "@types/jquery": "^3.2.12",
+    "@types/npm": "^2.0.29",
     "@types/webpack-env": "^1.13.1",
     "angular2-template-loader": "0.6.2",
+    "aspnet-prerendering": "^3.0.1",
     "aspnet-webpack": "2.0.1",
     "awesome-typescript-loader": "^3.2.3",
     "bootstrap": "3.3.7",
@@ -60,8 +62,8 @@
     "zone.js": "^0.8.17"
   },
   "devDependencies": {
-    "@types/chai": "4.0.4",
-    "@types/jasmine": "2.6.0",
+    "@types/chai": "^4.0.4",
+    "@types/jasmine": "^2.6.0",
     "chai": "4.1.2",
     "jasmine-core": "2.8.0",
     "karma": "1.7.1",
