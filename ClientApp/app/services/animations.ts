@@ -1,11 +1,3 @@
-// ======================================
-// Author: Ebenezer Monney
-// Email:  info@ebenmonney.com
-// Copyright (c) 2017 www.ebenmonney.com
-// 
-// ==> Gun4Hire: contact@ebenmonney.com
-// ======================================
-
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 

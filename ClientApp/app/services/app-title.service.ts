@@ -1,12 +1,4 @@
-﻿// ======================================
-// Author: Ebenezer Monney
-// Email:  info@ebenmonney.com
-// Copyright (c) 2017 www.ebenmonney.com
-// 
-// ==> Gun4Hire: contact@ebenmonney.com
-// ======================================
-
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Router, NavigationEnd, PRIMARY_OUTLET } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Title } from '@angular/platform-browser';

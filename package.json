@@ -2,9 +2,6 @@
   "name": "angularapp",
   "private": true,
   "version": "0.0.0",
-  "scripts": {
-    "test": "karma start ClientApp/test/karma.conf.js"
-  },
   "dependencies": {
     "@angular/animations": "^4.3.6",
     "@angular/common": "^4.3.6",
@@ -73,5 +70,9 @@
     "karma-jasmine": "1.1.0",
     "karma-jasmine-html-reporter": "0.2.2",
     "karma-webpack": "2.0.4"
+  },
+  "scripts": {
+    "dev-build": "node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js",
+    "test": "karma start ClientApp/test/karma.conf.js"
   }
 }

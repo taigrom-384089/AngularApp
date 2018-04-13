@@ -22,6 +22,10 @@ namespace AngularApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add cors
+            services.AddCors();
+
+            // Add framework services.
             services.AddMvc();
         }
 
@@ -50,6 +54,31 @@ namespace AngularApp
 
             app.UseStaticFiles();
             app.UseAuthentication();
+
+            // app.UseExceptionHandler(builder =>
+            // {
+            //     builder.Run(async context =>
+            //     {
+            //         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            //         context.Response.ContentType = MediaTypeNames.ApplicationJson;
+
+            //         var error = context.Features.Get<IExceptionHandlerFeature>();
+
+            //         if (error != null)
+            //         {
+            //             string errorMsg = JsonConvert.SerializeObject(new { error = error.Error.Message });
+            //             await context.Response.WriteAsync(errorMsg).ConfigureAwait(false);
+            //         }
+            //     });
+            // });
+
+
+            // app.UseSwagger();
+            // app.UseSwaggerUI(c =>
+            // {
+            //     c.SwaggerEndpoint("/swagger/v1/swagger.json", "QuickApp API V1");
+            // });
+
 
             app.UseMvc(routes =>
             {
