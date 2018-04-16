@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using Models.Interfaces;
+using DAL.Interfaces;
 
-namespace Models
+namespace DAL.Models
 {
     public class ApplicationUser : IdentityUser, IAuditableEntity
     {

@@ -11,7 +11,8 @@ using OpenIddict.Core;
 using AspNet.Security.OpenIdConnect.Primitives;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
-using Models;
+using DAL.Models;
+using DAL.Core;
 
 namespace AngularApp.Controllers
 {
