@@ -24,6 +24,9 @@ using DAL.Core.Interfaces;
 using DAL.Core;
 using AngularApp.ViewModels;
 using Microsoft.Extensions.Logging;
+using AngularApp.Policies;
+using AppPermissions = DAL.Core.ApplicationPermissions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AngularApp
 {
@@ -92,6 +95,25 @@ namespace AngularApp
                 options.DefaultChallengeScheme = OAuthValidationDefaults.AuthenticationScheme;
             }).AddOAuthValidation();
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(AuthPolicies.ViewUserByUserIdPolicy, policy => policy.Requirements.Add(new ViewUserByIdRequirement()));
+
+                options.AddPolicy(AuthPolicies.ViewUsersPolicy, policy => policy.RequireClaim(CustomClaimTypes.Permission, AppPermissions.ViewUsers));
+
+                options.AddPolicy(AuthPolicies.ManageUserByUserIdPolicy, policy => policy.Requirements.Add(new ManageUserByIdRequirement()));
+
+                options.AddPolicy(AuthPolicies.ManageUsersPolicy, policy => policy.RequireClaim(CustomClaimTypes.Permission, AppPermissions.ManageUsers));
+
+                options.AddPolicy(AuthPolicies.ViewRoleByRoleNamePolicy, policy => policy.Requirements.Add(new ViewRoleByNameRequirement()));
+
+                options.AddPolicy(AuthPolicies.ViewRolesPolicy, policy => policy.RequireClaim(CustomClaimTypes.Permission, AppPermissions.ViewRoles));
+
+                options.AddPolicy(AuthPolicies.AssignRolesPolicy, policy => policy.Requirements.Add(new AssignRolesRequirement()));
+
+                options.AddPolicy(AuthPolicies.ManageRolesPolicy, policy => policy.RequireClaim(CustomClaimTypes.Permission, AppPermissions.ManageRoles));
+            });
+
             // Add cors
             services.AddCors();
 
@@ -133,10 +155,10 @@ namespace AngularApp
             services.AddScoped<IAccountManager, AccountManager>();
 
             // Auth Policies
-            // services.AddSingleton<IAuthorizationHandler, ViewUserByIdHandler>();
-            // services.AddSingleton<IAuthorizationHandler, ManageUserByIdHandler>();
-            // services.AddSingleton<IAuthorizationHandler, ViewRoleByNameHandler>();
-            // services.AddSingleton<IAuthorizationHandler, AssignRolesHandler>();
+            services.AddSingleton<IAuthorizationHandler, ViewUserByIdHandler>();
+            services.AddSingleton<IAuthorizationHandler, ManageUserByIdHandler>();
+            services.AddSingleton<IAuthorizationHandler, ViewRoleByNameHandler>();
+            services.AddSingleton<IAuthorizationHandler, AssignRolesHandler>();
 
             // DB Creation and Seeding
             services.AddTransient<IDatabaseInitializer, DatabaseInitializer>();
