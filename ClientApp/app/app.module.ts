@@ -29,12 +29,24 @@ import { AccountService } from './services/account.service';
 import { AccountEndpoint } from './services/endpoint/account-endpoint.service';
 import { EndpointFactory } from './services/endpoint/endpoint-factory.service';
 
+import { BootstrapTabDirective } from './directives/bootstrap-tab.directive';
+import { BootstrapSelectDirective } from './directives/bootstrap-select.directive';
+import { GroupByPipe } from './pipes/group-by.pipe';
+
 import { AppComponent } from './components/app.component';
 import { LoginComponent } from "./components/login/login.component";
-import { NavMenuComponent } from './components/controls/navmenu/navmenu.component';
+import { SettingsComponent } from './components/settings/settings.component';
 import { HomeComponent } from './components/home/home.component';
+
+import { NavMenuComponent } from './components/controls/navmenu/navmenu.component';
 import { FetchDataComponent } from './components/controls/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/controls/counter/counter.component';
+import { UserInfoComponent } from "./components/controls/user/user-info.component";
+import { UserPreferencesComponent } from "./components/controls/user/user-preferences.component";
+import { UsersManagementComponent } from "./components/controls/user/users-management.component";
+import { RolesManagementComponent } from "./components/controls/role/roles-management.component";
+import { RoleEditorComponent } from "./components/controls/role/role-editor.component";
+import { SearchBoxComponent } from "./components/controls/search/search-box.component";
 
 import { NotificationsViewerComponent } from "./components/controls/notification/notifications-viewer.component";
 
@@ -62,12 +74,19 @@ import { NotificationsViewerComponent } from "./components/controls/notification
     ],
     declarations: [
         AppComponent,
-        NavMenuComponent,
         HomeComponent,
+        LoginComponent,
+        SettingsComponent,
+        UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
+        RolesManagementComponent, RoleEditorComponent,
         FetchDataComponent,
         CounterComponent,
-        LoginComponent,
-        NotificationsViewerComponent
+        NavMenuComponent,
+        SearchBoxComponent,
+        NotificationsViewerComponent,
+        BootstrapTabDirective,
+        BootstrapSelectDirective,
+        GroupByPipe
     ],
     providers: [
         { provide: 'BASE_URL', useFactory: getBaseUrl },
