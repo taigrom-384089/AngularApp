@@ -7,6 +7,7 @@ import { User } from '../../../models/user.model';
 import { UserEdit } from '../../../models/user-edit.model';
 import { Role } from '../../../models/role.model';
 import { Permission } from '../../../models/permission.model';
+import { AppTranslationService } from "../../../services/app-translation.service";
 
 
 @Component({
@@ -33,6 +34,8 @@ export class UserInfoComponent implements OnInit {
     public changesSavedCallback: () => void;
     public changesFailedCallback: () => void;
     public changesCancelledCallback: () => void;
+
+    gT = (key: string, params?: object) => this.translationService.getTranslation(key, params);
 
     @Input()
     isViewOnly: boolean;
@@ -70,7 +73,7 @@ export class UserInfoComponent implements OnInit {
     private roles;
 
 
-    constructor(private alertService: AlertService, private accountService: AccountService) {
+    constructor(private alertService: AlertService, private accountService: AccountService, private translationService: AppTranslationService) {
     }
 
     ngOnInit() {
@@ -232,7 +235,7 @@ export class UserInfoComponent implements OnInit {
         this.showValidationErrors = false;
         this.resetForm();
 
-        this.alertService.showMessage("Cancelled", "Operation cancelled by user", MessageSeverity.default);
+        this.alertService.showMessage(this.gT("users.editor.Cancelled"), this.gT("users.editor.OperationCancelledByUser"), MessageSeverity.default);
         this.alertService.resetStickyMessage();
 
         if (!this.isGeneralEditor)

@@ -82,7 +82,6 @@ namespace AngularApp.Controllers
             return await GetUsers(-1, -1);
         }
 
-
         [HttpGet("users/{page:int}/{pageSize:int}")]
         [Produces(typeof(List<UserViewModel>))]
         [Authorize(AuthPolicies.ViewUsersPolicy)]

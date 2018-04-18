@@ -139,7 +139,9 @@ namespace AngularApp
 
             services.AddSwaggerGen(c =>
             {
-                c.AddSecurityDefinition("BearerAuth", new ApiKeyScheme
+                c.SwaggerDoc("v1", new Info { Title = "QuickApp API", Version = "v1" });
+
+                c.AddSecurityDefinition("Bearer", new ApiKeyScheme
                 {
                     Name = "Authorization",
                     Description = "Login with your bearer authentication token. e.g. Bearer <auth-token>",
@@ -147,7 +149,12 @@ namespace AngularApp
                     Type = "apiKey"
                 });
 
-                c.SwaggerDoc("v1", new Info { Title = "QuickApp API", Version = "v1" });
+                var security = new Dictionary<string, IEnumerable<string>>
+                {
+                    {"Bearer", new string[] { }},
+                };
+
+                c.AddSecurityRequirement(security);
             });
 
             // Repositories

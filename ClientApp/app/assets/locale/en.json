@@ -124,7 +124,10 @@
       "Edit": "Edit",
       "Cancel": "Cancel",
       "Save": "Save",
-      "Saving": "Saving..."
+      "Saving": "Saving...",
+      "OperationCancelled": "Operation Cancelled!",
+      "Cancelled": "Cancelled!",
+      "OperationCancelledByUser": "Operation cancelled by user"
     }
   },
   "roles": {

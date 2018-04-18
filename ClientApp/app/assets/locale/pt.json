@@ -2,7 +2,8 @@
   "app": {
     "Welcome": "Bem-vindo!",
     "Notifications": "Notificações",
-    "New": "Novo"
+    "New": "Novo",
+    "WelcomeBack" : "Bem-vindo de volta {{name}}!"
   },
   "mainMenu": {
     "Appointments": "Compromissos",
@@ -125,7 +126,10 @@
       "Edit": "Editar",
       "Cancel": "Cancela",
       "Save": "Salvar",
-      "Saving": "Salvando..."
+      "Saving": "Salvando...",
+      "OperationCancelled": "Operação Cancelada!",
+      "Cancelled": "Cancelada!",
+      "OperationCancelledByUser": "Operação cancelada pelo usuário."
     }
   },
   "roles": {

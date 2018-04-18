@@ -32,6 +32,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     newNotificationCount = 0;
     appTitle = "AngularApp";
     appLogo = require("../assets/images/logo.png");
+    gT = (key: string, params?: object) => this.translationService.getTranslation(key, params);
 
     stickyToasties: number[] = [];
 
@@ -47,12 +48,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     get notificationsTitle() {
 
-        let gT = (key: string) => this.translationService.getTranslation(key);
-
         if (this.newNotificationCount)
-            return `${gT("app.Notifications")} (${this.newNotificationCount} ${gT("app.New")})`;
+            return `${this.gT("app.Notifications")} (${this.newNotificationCount} ${this.gT("app.New")})`;
         else
-            return gT("app.Notifications");
+            return this.gT("app.Notifications");
     }
 
 
@@ -115,6 +114,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
     ngOnInit() {
+
         this.isUserLoggedIn = this.authService.isLoggedIn;
 
         // 1 sec to ensure all the effort to get the css animation working is appreciated :|, Preboot screen is removed .5 sec later
@@ -126,7 +126,7 @@ export class AppComponent implements OnInit, AfterViewInit {
                 this.alertService.resetStickyMessage();
 
                 if (!this.authService.isSessionExpired)
-                    this.alertService.showMessage("Login", `Welcome back ${this.userName}!`, MessageSeverity.default);
+                    this.alertService.showMessage("Login", this.gT("app.WelcomeBack", { name : this.userName }), MessageSeverity.default);
                 else
                     this.alertService.showStickyMessage("Session Expired", "Your Session has expired. Please log in again", MessageSeverity.warn);
             }

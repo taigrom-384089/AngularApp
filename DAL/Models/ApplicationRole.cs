@@ -17,7 +17,8 @@ namespace DAL.Models
         /// </remarks>
         public ApplicationRole()
         {
-
+            this.Users = new List<IdentityUserRole<string>>();
+            this.Claims = new List<IdentityRoleClaim<string>>();
         }
 
         /// <summary>
@@ -64,11 +65,11 @@ namespace DAL.Models
         /// <summary>
         /// Navigation property for the users in this role.
         /// </summary>
-        public virtual ICollection<IdentityUserRole<string>> Users { get; set; }
+        public ICollection<IdentityUserRole<string>> Users { get; set; }
 
         /// <summary>
         /// Navigation property for claims in this role.
         /// </summary>
-        public virtual ICollection<IdentityRoleClaim<string>> Claims { get; set; }
+        public ICollection<IdentityRoleClaim<string>> Claims { get; set; }
     }
 }

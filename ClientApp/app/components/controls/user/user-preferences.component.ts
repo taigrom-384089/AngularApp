@@ -17,6 +17,7 @@ import { Permission } from '../../../models/permission.model';
 export class UserPreferencesComponent implements OnInit, OnDestroy {
 
     themeSelectorToggle = true;
+    gT = (key: string, params?: object) => this.translationService.getTranslation(key, params);
 
     languageChangedSubscription: any;
 
@@ -69,7 +70,7 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
     setAsDefault() {
         this.alertService.showDialog("Are you sure you want to set the current configuration as your new defaults?", DialogType.confirm,
             () => this.setAsDefaultHelper(),
-            () => this.alertService.showMessage("Operation Cancelled!", "", MessageSeverity.default));
+            () => this.alertService.showMessage(this.gT("users.editor.OperationCancelled"), "", MessageSeverity.default));
     }
 
     setAsDefaultHelper() {
