@@ -37,10 +37,8 @@ import { AppComponent } from './components/app.component';
 import { LoginComponent } from "./components/login/login.component";
 import { SettingsComponent } from './components/settings/settings.component';
 import { HomeComponent } from './components/home/home.component';
+import { CustomersComponent } from './components/customers/customers.component';
 
-import { NavMenuComponent } from './components/controls/navmenu/navmenu.component';
-import { FetchDataComponent } from './components/controls/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/controls/counter/counter.component';
 import { UserInfoComponent } from "./components/controls/user/user-info.component";
 import { UserPreferencesComponent } from "./components/controls/user/user-preferences.component";
 import { UsersManagementComponent } from "./components/controls/user/users-management.component";
@@ -79,11 +77,9 @@ import { NotificationsViewerComponent } from "./components/controls/notification
         HomeComponent,
         LoginComponent,
         SettingsComponent,
+        CustomersComponent,
         UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
         RolesManagementComponent, RoleEditorComponent,
-        FetchDataComponent,
-        CounterComponent,
-        NavMenuComponent,
         SearchBoxComponent,
         StatisticsDemoComponent, TodoDemoComponent, BannerDemoComponent,
         NotificationsViewerComponent,
