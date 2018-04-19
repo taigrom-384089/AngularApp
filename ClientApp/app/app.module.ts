@@ -47,7 +47,9 @@ import { UsersManagementComponent } from "./components/controls/user/users-manag
 import { RolesManagementComponent } from "./components/controls/role/roles-management.component";
 import { RoleEditorComponent } from "./components/controls/role/role-editor.component";
 import { SearchBoxComponent } from "./components/controls/search/search-box.component";
-
+import { BannerDemoComponent } from "./components/controls/banner/banner-demo.component";
+import { TodoDemoComponent } from "./components/controls/todo/todo-demo.component";
+import { StatisticsDemoComponent } from "./components/controls/statistics/statistics-demo.component";
 import { NotificationsViewerComponent } from "./components/controls/notification/notifications-viewer.component";
 
 @NgModule({
@@ -83,6 +85,7 @@ import { NotificationsViewerComponent } from "./components/controls/notification
         CounterComponent,
         NavMenuComponent,
         SearchBoxComponent,
+        StatisticsDemoComponent, TodoDemoComponent, BannerDemoComponent,
         NotificationsViewerComponent,
         BootstrapTabDirective,
         BootstrapSelectDirective,
