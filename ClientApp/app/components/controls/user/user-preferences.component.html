@@ -46,9 +46,6 @@
             <select id="homePage" [(ngModel)]="configurations.homeUrl" #homePageSelector="bootstrap-select" bootstrapSelect class="selectpicker form-control">
                 <option data-icon="fa fa-tachometer" data-subtext="(Default)" value="/">{{'preferences.Dashboard' | translate}}</option>
                 <option *ngIf="canViewCustomers" data-icon="fa fa-handshake-o" value="/customers">{{'preferences.Customers' | translate}}</option>
-                <option *ngIf="canViewProducts" data-icon="fa fa-truck" value="/products">{{'preferences.Products' | translate}}</option>
-                <option *ngIf="canViewOrders" data-icon="fa fa-shopping-cart" value="/orders">{{'preferences.Orders' | translate}}</option>
-                <option data-icon="fa fa-info-circle" value="/about">{{'preferences.About' | translate}}</option>
                 <option data-icon="fa fa-cog" value="/settings">{{'preferences.Settings' | translate}}</option>
             </select>
         </div>

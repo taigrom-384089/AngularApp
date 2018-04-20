@@ -39,6 +39,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { HomeComponent } from './components/home/home.component';
 import { CustomersComponent } from './components/customers/customers.component';
 
+import { NavMenuComponent } from "./components/controls/navmenu/nav-menu.component";
 import { UserInfoComponent } from "./components/controls/user/user-info.component";
 import { UserPreferencesComponent } from "./components/controls/user/user-preferences.component";
 import { UsersManagementComponent } from "./components/controls/user/users-management.component";
@@ -81,6 +82,7 @@ import { NotificationsViewerComponent } from "./components/controls/notification
         UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
         RolesManagementComponent, RoleEditorComponent,
         SearchBoxComponent,
+        NavMenuComponent,
         StatisticsDemoComponent, TodoDemoComponent, BannerDemoComponent,
         NotificationsViewerComponent,
         BootstrapTabDirective,

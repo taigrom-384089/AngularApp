@@ -2,7 +2,8 @@
   "app": {
     "Welcome": "Welcome",
     "Notifications": "Notifications",
-    "New": "New"
+    "New": "New",
+    "WelcomeBack" : "Welcome Back {{name}}!"
   },
   "mainMenu": {
     "Appointments": "Appointments",

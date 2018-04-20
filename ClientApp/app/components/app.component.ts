@@ -6,12 +6,9 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { AlertService, AlertDialog, DialogType, AlertMessage, MessageSeverity } from '../services/alert.service';
 import { NotificationService } from "../services/notification.service";
 import { AppTranslationService } from "../services/app-translation.service";
-import { AccountService } from '../services/account.service';
 import { LocalStoreManager } from '../services/local-store-manager.service';
-import { AppTitleService } from '../services/app-title.service';
 import { AuthService } from '../services/auth.service';
 import { ConfigurationService } from '../services/configuration.service';
-import { Permission } from '../models/permission.model';
 import { LoginComponent } from "../components/login/login.component";
 
 var alertify: any = require('../assets/scripts/alertify.js');
@@ -25,13 +22,13 @@ var alertify: any = require('../assets/scripts/alertify.js');
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
+    name: string = "Carlos";
+
     isAppLoaded: boolean;
     isUserLoggedIn: boolean;
     shouldShowLoginModal: boolean;
     removePrebootScreen: boolean;
     newNotificationCount = 0;
-    appTitle = "AngularApp";
-    appLogo = require("../assets/images/logo.png");
     gT = (key: string, params?: object) => this.translationService.getTranslation(key, params);
 
     stickyToasties: number[] = [];
@@ -56,7 +53,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
     constructor(storageManager: LocalStoreManager, private toastyService: ToastyService, private toastyConfig: ToastyConfig,
-        private accountService: AccountService, private alertService: AlertService, private notificationService: NotificationService, private appTitleService: AppTitleService,
+        private alertService: AlertService, private notificationService: NotificationService, 
         private authService: AuthService, private translationService: AppTranslationService, public configurations: ConfigurationService, public router: Router) {
 
         storageManager.initialiseStorageSyncListener();
@@ -70,7 +67,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.toastyConfig.limit = 100;
         this.toastyConfig.showClose = true;
 
-        this.appTitleService.appName = this.appTitle;
     }
 
 
@@ -155,16 +151,6 @@ export class AppComponent implements OnInit, AfterViewInit {
                     this.alertService.showMessage("Session Ended!", "", MessageSeverity.default);
                 }
             }, 500);
-        });
-
-        this.router.events.subscribe(event => {
-            if (event instanceof NavigationStart) {
-                let url = (<NavigationStart>event).url;
-
-                if (url !== url.toLowerCase()) {
-                    this.router.navigateByUrl((<NavigationStart>event).url.toLowerCase());
-                }
-            }
         });
     }
 
@@ -265,10 +251,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         }
     }
 
-
-
-
-
     showToast(message: AlertMessage, isSticky: boolean) {
 
         if (message == null) {
@@ -312,16 +294,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         }
     }
 
-
-
-
-
-    logout() {
-        this.authService.logout();
-        this.authService.redirectLogoutUser();
-    }
-
-
     getYear() {
         return new Date().getUTCFullYear();
     }
@@ -334,19 +306,5 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     get fullName(): string {
         return this.authService.currentUser ? this.authService.currentUser.fullName : "";
-    }
-
-
-
-    get canViewCustomers() {
-        return this.accountService.userHasPermission(Permission.viewUsersPermission); //eg. viewCustomersPermission
-    }
-
-    get canViewProducts() {
-        return this.accountService.userHasPermission(Permission.viewUsersPermission); //eg. viewProductsPermission
-    }
-
-    get canViewOrders() {
-        return true; //eg. viewOrdersPermission
     }
 }
