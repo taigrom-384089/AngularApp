@@ -1,12 +1,4 @@
-﻿// ======================================
-// Author: Ebenezer Monney
-// Email:  info@ebenmonney.com
-// Copyright (c) 2017 www.ebenmonney.com
-// 
-// ==> Gun4Hire: contact@ebenmonney.com
-// ======================================
-
-import { Component, OnInit, OnDestroy, Input, TemplateRef, ViewChild } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy, Input, TemplateRef, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import { AuthService } from '../../../services/auth.service';
@@ -95,8 +87,14 @@ export class TodoDemoComponent implements OnInit, OnDestroy {
         this.loadingIndicator = true;
 
         this.fetch((data) => {
+
+            data.forEach((todo, index, data) => {
+                (<any>todo).index = index + 1;
+            });
+    
             this.rows = data;
             this.rowsCache = [...data];
+
             this.isDataLoaded = true;
 
             setTimeout(() => { this.loadingIndicator = false; }, 1500);
@@ -130,7 +128,7 @@ export class TodoDemoComponent implements OnInit, OnDestroy {
                 if (data == null) {
                     data = [
                         { "completed": true, "important": true, "name": "Create visual studio extension", "description": "Create a visual studio VSIX extension package that will add this project as an aspnet-core project template" },
-                        { "completed": false, "important": true, "name": "Do a quick how-to writeup", "description": "" },
+                        { "completed": false, "important": true, "name": "Do a quick how-to writeup", "description": "asdf" },
                         {
                             "completed": false, "important": false, "name": "Create aspnet-core/angular2 tutorials based on this project", "description": "Create tutorials (blog/video/youtube) on how to build applications (full stack)" +
                             " using aspnet-core/angular2. The tutorial will focus on getting productive with the technology right away rather than the details on how and why they work so audience can get onboard quickly."
@@ -178,8 +176,8 @@ export class TodoDemoComponent implements OnInit, OnDestroy {
 
 
     updateValue(event, cell, cellValue, row) {
-        this.editing[row.$$index + '-' + cell] = false;
-        this.rows[row.$$index][cell] = event.target.value;
+        this.editing[row.index + '-' + cell] = false;
+        this.rows[row.index - 1][cell] = event.target.value;
 
         this.saveToDisk();
     }
