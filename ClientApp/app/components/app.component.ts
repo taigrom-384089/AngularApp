@@ -22,8 +22,6 @@ var alertify: any = require('../assets/scripts/alertify.js');
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
-    name: string = "Carlos";
-
     isAppLoaded: boolean;
     isUserLoggedIn: boolean;
     shouldShowLoginModal: boolean;
@@ -183,30 +181,6 @@ export class AppComponent implements OnInit, AfterViewInit {
                     this.alertService.showStickyMessage("Load Error", "Loading new notifications from the server failed!", MessageSeverity.error);
             });
     }
-
-
-    markNotificationsAsRead() {
-
-        let recentNotifications = this.notificationService.recentNotifications;
-
-        if (recentNotifications.length) {
-            this.notificationService.readUnreadNotification(recentNotifications.map(n => n.id), true)
-                .subscribe(response => {
-                    for (let n of recentNotifications) {
-                        n.isRead = true;
-                    }
-
-                    this.newNotificationCount = recentNotifications.filter(n => !n.isRead).length;
-                },
-                error => {
-                    this.alertService.logError(error);
-                    this.alertService.showMessage("Notification Error", "Marking read notifications failed", MessageSeverity.error);
-
-                });
-        }
-    }
-
-
 
     showDialog(dialog: AlertDialog) {
 
