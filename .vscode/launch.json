@@ -5,6 +5,13 @@
    "version": "0.2.0",
    "configurations": [
         {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome",
+            "url": "http://localhost:5051",
+            "webRoot": "${workspaceFolder}/wwwroot"
+        },
+        {
             "name": ".NET Core Launch (web)",
             "type": "coreclr",
             "request": "launch",
@@ -16,7 +23,7 @@
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
-                "enabled": true,
+                "enabled": false,
                 "args": "${auto-detect-url}",
                 "windows": {
                     "command": "cmd.exe",
@@ -41,6 +48,13 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
+        },
+
+    ],
+    "compounds": [
+        {
+            "name": ".NET + Chrome",
+            "configurations": [".NET Core Launch (web)", "Chrome"]
         }
-    ,]
+    ]
 }
