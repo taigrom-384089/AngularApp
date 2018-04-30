@@ -1,12 +1,4 @@
-﻿// ======================================
-// Author: Ebenezer Monney
-// Email:  info@ebenmonney.com
-// Copyright (c) 2017 www.ebenmonney.com
-// 
-// ==> Gun4Hire: contact@ebenmonney.com
-// ======================================
-
-import { Directive, Attribute, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
+﻿import { Directive, Attribute, ElementRef, Input, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as $ from 'jquery';
 import 'bootstrap-select/dist/js/bootstrap-select';

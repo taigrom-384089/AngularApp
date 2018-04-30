@@ -1,19 +1,11 @@
-﻿// ======================================
-// Author: Ebenezer Monney
-// Email:  info@ebenmonney.com
-// Copyright (c) 2017 www.ebenmonney.com
-// 
-// ==> Gun4Hire: contact@ebenmonney.com
-// ======================================
-
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 
-//import { AuthService } from './auth.service';
+import { AuthService } from './auth.service';
 import { NotificationEndpoint } from './endpoint/notification-endpoint.service';
 import { Notification } from '../models/notification.model';
 
@@ -35,7 +27,7 @@ export class NotificationService {
 
 
 
-    constructor(private notificationEndpoint: NotificationEndpoint) {
+    constructor(private notificationEndpoint: NotificationEndpoint, private authService: AuthService) {
 
     }
 
@@ -148,7 +140,6 @@ export class NotificationService {
 
 
     get currentUser() {
-        //return this.authService.currentUser;
-        return "";
+        return this.authService.currentUser;
     }
 }
